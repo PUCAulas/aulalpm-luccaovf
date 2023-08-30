@@ -25,8 +25,8 @@ public class Main {
             System.out.println("\n2 - Listar Equipamentos");
             System.out.println("\n3 - Edit Equipamentos");
             System.out.println("\n4 - Remover Equipamentos");
-            System.out.println("\n5 - Realizar Aluguel");
-            System.out.println("\n6 - Listar Alugueis");
+
+
             System.out.println("-------");
 
             System.out.println("\nDigite a opcao que deseja: ");

@@ -2,6 +2,10 @@ public class Cliente {
     private Integer codigoCliente;
     public String nome;
     
+    public Cliente(Integer codigoCliente, String nome) {
+        this.codigoCliente = codigoCliente;
+        this.nome = nome;
+    }
     public Integer getCodigoCliente() {
         return codigoCliente;
     }
