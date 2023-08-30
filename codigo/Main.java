@@ -20,7 +20,8 @@ public class Main {
             System.out.println("\n1 - Cadastrar Equipamentos");
             System.out.println("\n2 - Listar Equipamentos");
             System.out.println("\n3 - Edit Equipamentos");
-            System.out.println("\n4 Remover Equipamentos");
+            System.out.println("\n4 - Remover Equipamentos");
+            System.out.println("\n0 - Sair");
             System.out.println("-------");
 
             System.out.println("\nDigite a opcao que deseja: ");
