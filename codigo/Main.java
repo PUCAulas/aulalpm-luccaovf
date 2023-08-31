@@ -1,9 +1,13 @@
 import java.util.Random;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-
+    	//array dos objetos
+    	ArrayList<Emprestimo> arrayEmprestimo = new ArrayList<>();
+    	ArrayList<Cliente> arrayCliente = new ArrayList<>();
+    	ArrayList<Equipamento> arrayEquipamento = new ArrayList<>();
         // declarando o scanner
         Scanner input = new Scanner(System.in);
         // inicializando gerador de codigos
@@ -21,7 +25,8 @@ public class Main {
             System.out.println("\n2 - Listar Equipamentos");
             System.out.println("\n3 - Edit Equipamentos");
             System.out.println("\n4 - Remover Equipamentos");
-            System.out.println("\n0 - Sair");
+
+
             System.out.println("-------");
 
             System.out.println("\nDigite a opcao que deseja: ");
@@ -53,9 +58,31 @@ public class Main {
                     eqp.removeEquipamento(codigoEquipamento);
                     System.out.println("\nEquipamento removido com sucesso.");
                     break;
+                case 5:
+                	break;
+                case 6:
+                	break;
 
             }
         }
 
+    }
+    
+    public void listarClinte(ArrayList<Cliente> arrayCliente) {
+    	int cont = 0;
+    	for(Cliente i : arrayCliente) {
+    		System.out.println("Numero do Cliente: "+cont+", Nome Cliente: "+i.getNome());
+    		cont++;
+    	}
+    }
+    public void listarEquipamento(ArrayList<Equipamento> arrayEquipamento) {
+    	int cont = 0;
+    	for(Equipamento i : arrayEquipamento) {
+    		System.out.println("Numero do Equipamento: "+cont+", Nome Equipamento: "+i.getTipoEquipamento()+", Descricao Equipamento: "+i.getDescricaoEquipamento());;
+    		cont++;
+    	}
+    }
+    public void realizarAluguel(ArrayList<Emprestimo> arrayEmprestimo) {
+    	
     }
 }
