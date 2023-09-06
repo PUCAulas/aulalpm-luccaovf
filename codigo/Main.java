@@ -29,7 +29,7 @@ public class Main {
             input.nextLine(); // limpando o buffer do teclado
             switch (opcaoMenu) {
                 case 1:
-                   eqp.adicionarEquipamento(input);
+                    eqp.adicionarEquipamento(input);
                     break;
                 case 2:
                     eqp.listarEquipamentoP();
