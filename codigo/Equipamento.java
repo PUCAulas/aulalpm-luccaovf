@@ -68,6 +68,7 @@ public class Equipamento {
 
         Equipamento novoEquipamento = new Equipamento(tipoEquipamento, descricao, codigoEquipamento);
         armazenamento.add(novoEquipamento);
+        System.out.println("Equipamento Adicionado");
     }
 
     // metodo para listar todos equipamentos

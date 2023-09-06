@@ -3,17 +3,14 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Main {
-   // static ArrayList<Equipamento> armazenamento = new ArrayList<>();
 
     static Equipamento eqp = new Equipamento();
-    //static Random random = new Random();
     static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
         // array dos objetos
-       ArrayList<Emprestimo> arrayEmprestimo = new ArrayList<>();
+        ArrayList<Emprestimo> arrayEmprestimo = new ArrayList<>();
         ArrayList<Cliente> arrayCliente = new ArrayList<>();
-        ArrayList<Equipamento> arrayEquipamento = new ArrayList<>();
 
         // atributos para addEquipamento
 
@@ -61,15 +58,7 @@ public class Main {
         }
     }
 
-    public void listarEquipamento(ArrayList<Equipamento> armazenamento) {
-        int cont = 0;
-        for (Equipamento i : armazenamento) {
-            System.out.println("Numero do Equipamento: " + cont + ", Nome Equipamento: " + i.getTipoEquipamento()
-                    + ", Descricao Equipamento: " + i.getDescricaoEquipamento());
-            ;
-            cont++;
-        }
-    }
+   
 
     public void realizarAluguel(ArrayList<Emprestimo> arrayEmprestimo) {
 
