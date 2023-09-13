@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class Cliente {
     public String nome;
+    static ArrayList<Cliente> armazenamentoCliente = new ArrayList<>();
+    static Scanner input = new Scanner(System.in);
+    static Random random = new Random();
+    
     private int id;
 
     public int getId() {
@@ -27,9 +31,7 @@ public class Cliente {
         this.nome = nome;
     }
 
-    static ArrayList<Cliente> armazenamentoCliente = new ArrayList<>();
-    static Scanner input = new Scanner(System.in);
-    static Random random = new Random();
+    
 
     // Salvando cliente
     public void salvarCliente(ArrayList<Cliente> armazenamentoCliente) {
@@ -37,7 +39,9 @@ public class Cliente {
     }
 
     // metodo para adicionar cliente
+
     public static void adicionarCliente(Cliente novoCliente2) {
+
         String nome;
 
         System.out.println("\nDigite o nome do Cliente: ");
@@ -99,5 +103,16 @@ public class Cliente {
             }
 
         }
+    }
+    
+    public static Cliente encontraCliente(int id) {
+    	Cliente encontrado;
+    	for(Cliente cliente : armazenamentoCliente) {
+    		if(cliente.getId() == id) {
+    			encontrado = cliente;
+    			return encontrado;
+    		}
+    	}
+		return null;
     }
 }

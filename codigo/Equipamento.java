@@ -126,4 +126,18 @@ public class Equipamento {
                 System.out.println("Codigo Invalido");
             }
 
-}}}
+
+        }
+        }
+    
+    public static Equipamento encontraEquipamento(int id) {
+    	Equipamento encontrado;
+    	for(Equipamento equipamento : armazenamento) {
+    		if(equipamento.getCodigoEquipamento() == id) {
+    			encontrado = equipamento;
+    			return encontrado;
+    		}
+    	}
+		return null;
+    }
+    }
