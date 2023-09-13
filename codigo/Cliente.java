@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class Cliente {
     public String nome;
+    static ArrayList<Cliente> armazenamentoCliente = new ArrayList<>();
+    static Scanner input = new Scanner(System.in);
+    static Random random = new Random();
+    
     private int id;
 
     public int getId() {
@@ -27,16 +31,14 @@ public class Cliente {
         this.nome = nome;
     }
 
-    static ArrayList<Cliente> armazenamentoCliente = new ArrayList<>();
-    static Scanner input = new Scanner(System.in);
-    static Random random = new Random();
+    
 
-    // Salvando equipamento
+    // Salvando cliente
     public void salvarCliente(ArrayList<Cliente> armazenamentoCliente) {
         armazenamentoCliente.addAll(0, armazenamentoCliente);
     }
 
-    // metodo para adicionar equipamento
+    // metodo para adicionar cliente
     public static void adicionarCliente(Scanner scanner) {
         String nome;
 
@@ -49,7 +51,7 @@ public class Cliente {
         armazenamentoCliente.add(novoCliente);
     }
 
-    // metodo para listar todos equipamentos
+    // metodo para listar todos clientes
     public static void listarCliente() {
         System.out.println("\nLista de Clientes:");
         for (Cliente cliente : armazenamentoCliente) {
@@ -58,7 +60,7 @@ public class Cliente {
         }
     }
 
-    // metodo para editar todos equipamentos
+    // metodo para editar todos clientes
     public static void editarCliente() {
         int codigoAlter = 0;
 
@@ -81,7 +83,7 @@ public class Cliente {
         }
     }
 
-    // metodo para excluir equipamento
+    // metodo para excluir cliente
     static void excluirCliente() {
         int codigoExcluir = 0;
         System.out.println("Digite o codigo do cliente que deseja excluir: ");
@@ -99,5 +101,16 @@ public class Cliente {
             }
 
         }
+    }
+    
+    public static Cliente encontraCliente(int id) {
+    	Cliente encontrado;
+    	for(Cliente cliente : armazenamentoCliente) {
+    		if(cliente.getId() == id) {
+    			encontrado = cliente;
+    			return encontrado;
+    		}
+    	}
+		return null;
     }
 }
