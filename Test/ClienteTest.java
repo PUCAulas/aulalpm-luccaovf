@@ -7,7 +7,7 @@ class ClienteTest {
     @Test
     public void testAdicionarCliente() {
     // Crie um novo Cliente
-    Cliente novoCliente = new Cliente("1",3);
+    Cliente novoCliente = new Cliente("ian",3);
 
     // Adicione o novo cliente à lista de armazenamento
     Cliente.armazenamentoCliente.clear(); // Limpa a lista ates de adicionar
