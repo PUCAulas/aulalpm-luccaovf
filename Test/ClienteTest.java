@@ -6,16 +6,35 @@ class ClienteTest {
 
     @Test
     public void testAdicionarCliente() {
-    // Crie um novo Cliente
-    Cliente novoCliente = new Cliente("ian",3);
+    Cliente novoCliente = new Cliente("1",3);
 
-    // Adicione o novo cliente à lista de armazenamento
-    Cliente.armazenamentoCliente.clear(); // Limpa a lista ates de adicionar
+    Cliente.armazenamentoCliente.clear(); 
     Cliente.adicionarCliente(novoCliente);
 
-    // Ver se o cliente foi adicionado com sucesso
     assertEquals(1, Cliente.armazenamentoCliente.size());
-    assertEquals(novoCliente, Cliente.armazenamentoCliente.get(0));
+    assertEquals(novoCliente, Cliente.armazenamentoCliente.get(3));
 }
+    @Test
+    public void testEditarCliente() {
+    Cliente cliente = new Cliente("1", 2);
+    
+    Cliente.armazenamentoCliente.clear();
+    Cliente.adicionarCliente(cliente);
+  
+    Cliente.editarCliente();
+    assertEquals("IanEditado", cliente.getNome());
+}
+   
+    @Test
+    public void testExcluirCliente() {
+    Cliente cliente = new Cliente("1", 2);
+        
+        Cliente.armazenamentoCliente.clear(); 
+        Cliente.adicionarCliente(cliente);
+
+        
+        Cliente.excluirCliente();
+        assertEquals(0, Cliente.armazenamentoCliente.size());
+    }
   
 }
