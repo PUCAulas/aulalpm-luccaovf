@@ -6,7 +6,7 @@ class ClienteTest {
 
     @Test
     public void testAdicionarCliente() {
-    Cliente novoCliente = new Cliente("1",3);
+    Cliente novoCliente = new Cliente("ian",3);
 
     Cliente.armazenamentoCliente.clear(); 
     Cliente.adicionarCliente(novoCliente);
@@ -16,7 +16,7 @@ class ClienteTest {
 }
     @Test
     public void testEditarCliente() {
-    Cliente cliente = new Cliente("1", 2);
+    Cliente cliente = new Cliente("ian", 2);
     
     Cliente.armazenamentoCliente.clear();
     Cliente.adicionarCliente(cliente);
@@ -27,7 +27,7 @@ class ClienteTest {
    
     @Test
     public void testExcluirCliente() {
-    Cliente cliente = new Cliente("1", 2);
+    Cliente cliente = new Cliente("ian", 2);
         
         Cliente.armazenamentoCliente.clear(); 
         Cliente.adicionarCliente(cliente);
