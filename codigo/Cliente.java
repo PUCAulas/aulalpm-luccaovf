@@ -31,13 +31,13 @@ public class Cliente {
     static Scanner input = new Scanner(System.in);
     static Random random = new Random();
 
-    // Salvando equipamento
+    // Salvando cliente
     public void salvarCliente(ArrayList<Cliente> armazenamentoCliente) {
         armazenamentoCliente.addAll(0, armazenamentoCliente);
     }
 
-    // metodo para adicionar equipamento
-    public static void adicionarCliente(Scanner scanner) {
+    // metodo para adicionar cliente
+    public static void adicionarCliente(Cliente novoCliente2) {
         String nome;
 
         System.out.println("\nDigite o nome do Cliente: ");
@@ -49,7 +49,7 @@ public class Cliente {
         armazenamentoCliente.add(novoCliente);
     }
 
-    // metodo para listar todos equipamentos
+    // metodo para listar todos clientes
     public static void listarCliente() {
         System.out.println("\nLista de Clientes:");
         for (Cliente cliente : armazenamentoCliente) {
@@ -58,7 +58,7 @@ public class Cliente {
         }
     }
 
-    // metodo para editar todos equipamentos
+    // metodo para editar todos clientes
     public static void editarCliente() {
         int codigoAlter = 0;
 
@@ -81,7 +81,7 @@ public class Cliente {
         }
     }
 
-    // metodo para excluir equipamento
+    // metodo para excluir cliente
     static void excluirCliente() {
         int codigoExcluir = 0;
         System.out.println("Digite o codigo do cliente que deseja excluir: ");
