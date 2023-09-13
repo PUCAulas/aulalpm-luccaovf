@@ -39,7 +39,9 @@ public class Cliente {
     }
 
     // metodo para adicionar cliente
-    public static void adicionarCliente(Scanner scanner) {
+
+    public static void adicionarCliente(Cliente novoCliente2) {
+
         String nome;
 
         System.out.println("\nDigite o nome do Cliente: ");

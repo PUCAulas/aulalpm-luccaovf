@@ -4,13 +4,37 @@ import org.junit.jupiter.api.Test;
 
 class ClienteTest {
 
-	Cliente cliente = new Cliente("Jorge", 2);
-	
-	@Test
-	void verificarSeClienteExiste() {
-		assertEquals(2, cliente.getId());
-	}
-	
-	
+    @Test
+    public void testAdicionarCliente() {
+    Cliente novoCliente = new Cliente("ian",3);
 
+    Cliente.armazenamentoCliente.clear(); 
+    Cliente.adicionarCliente(novoCliente);
+
+    assertEquals(1, Cliente.armazenamentoCliente.size());
+    assertEquals(novoCliente, Cliente.armazenamentoCliente.get(3));
+}
+    @Test
+    public void testEditarCliente() {
+    Cliente cliente = new Cliente("ian", 2);
+    
+    Cliente.armazenamentoCliente.clear();
+    Cliente.adicionarCliente(cliente);
+  
+    Cliente.editarCliente();
+    assertEquals("IanEditado", cliente.getNome());
+}
+   
+    @Test
+    public void testExcluirCliente() {
+    Cliente cliente = new Cliente("ian", 2);
+        
+        Cliente.armazenamentoCliente.clear(); 
+        Cliente.adicionarCliente(cliente);
+
+        
+        Cliente.excluirCliente();
+        assertEquals(0, Cliente.armazenamentoCliente.size());
+    }
+  
 }
