@@ -1,17 +1,12 @@
-import java.util.Random;
 import java.util.Scanner;
-import java.util.ArrayList;
+
 
 public class Main {
-    static Emprestimo emp = new Emprestimo();
-    static Equipamento eqp = new Equipamento();
+ 
     static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // array dos objetos
-        ArrayList<Emprestimo> arrayEmprestimo = new ArrayList<>();
-        ArrayList<Cliente> arrayCliente = new ArrayList<>();
-
+   
         // atributos para addEquipamento
 
         int opcaoMenu = 99;
@@ -19,7 +14,7 @@ public class Main {
             System.out.println("-------");
             System.out.println("\n1 - Setor De Equipamentos");
             System.out.println("\n2 - Setor De Cliente");
-            System.out.println("\n2 - Setor De Aluguel");
+            System.out.println("\n3 - Setor De Aluguel");
             System.out.println("\n0 - Para Encerrar o Sistema");
             System.out.println("-------");
 
@@ -32,7 +27,6 @@ public class Main {
                     break;
                 case 2:
                     subMenuCliente();
-
                     break;
                 case 3:
                     subMenuEmprestimo();
@@ -99,11 +93,9 @@ public class Main {
             switch (opcaoMenu) {
                 case 1:
                     Cliente.adicionarCliente(input);
-
                     break;
                 case 2:
                     Cliente.listarCliente();
-
                     break;
                 case 3:
                     Cliente.editarCliente();
@@ -142,7 +134,7 @@ public class Main {
 
                     break;
                 case 3:
-                    emp.imprimirValor();
+                    
                     break;
                 case 4:
 

@@ -89,23 +89,23 @@ public class Equipamento {
         codigoAlter = input.nextInt();
         input.nextLine();
 
-        for (Equipamento equipamento : armazenamento) {
-            if (equipamento.getCodigoEquipamento() == codigoAlter) {
-                System.out.println("Equipamento Encontrado, nome: " + equipamento.getTipoEquipamento() + " Descricao: "
-                        + equipamento.getDescricaoEquipamento());
+        Equipamento equiEdit;
+        equiEdit = Equipamento.encontraEquipamento(codigoAlter);
+        if (equiEdit != null) {
+        	System.out.println("Equipamento Encontrado, nome: " + equiEdit.getTipoEquipamento() + " Descricao: "
+                        + equiEdit.getDescricaoEquipamento());
 
-                System.out.println("Digite o novo nome do equipamento: ");
-                String novoNome = input.nextLine();
-                System.out.println("Digite a novo descricao: ");
-                String novaDesc = input.nextLine();
-                equipamento.setTipoEquipamento(novoNome);
-                equipamento.setDescricaoEquipamento(novaDesc);
-                System.out.println("Equipamento Alterado Com Sucesso");
+            System.out.println("Digite o novo nome do equipamento: ");
+            String novoNome = input.nextLine();
+            System.out.println("Digite a novo descricao: ");
+            String novaDesc = input.nextLine();
+            equiEdit.setTipoEquipamento(novoNome);
+            equiEdit.setDescricaoEquipamento(novaDesc);
+            System.out.println("Equipamento Alterado Com Sucesso");
 
-            } else {
-                System.out.println("Equipamento com o codigo: " + codigoAlter + " Nao encontrado");
-            }
-        }
+         } else 
+            System.out.println("Equipamento com o codigo: " + codigoAlter + " Nao encontrado");
+         
     }
     
 
@@ -115,20 +115,15 @@ public class Equipamento {
         System.out.println("Digite o codigo do equipamento que deseja excluir: ");
         codigoExcluir = input.nextInt();
 
-        Equipamento equipamentoRemovido = null;
-        for (Equipamento equipamento : armazenamento) {
-            if (equipamento.getCodigoEquipamento() == codigoExcluir) {
-                equipamentoRemovido = equipamento;
-                armazenamento.remove(equipamentoRemovido);
-                System.out.println("Equipamento removido com sucesso!");
-                break;
-            } else {
-                System.out.println("Codigo Invalido");
-            }
-
-
-        }
-        }
+        Equipamento equipamentoRemovido;
+        equipamentoRemovido = Equipamento.encontraEquipamento(codigoExcluir);
+        if (equipamentoRemovido != null) {
+            armazenamento.remove(equipamentoRemovido);
+            System.out.println("Equipamento removido com sucesso!");
+        } else 
+            System.out.println("Codigo Invalido");
+            
+    }
     
     public static Equipamento encontraEquipamento(int id) {
     	Equipamento encontrado;

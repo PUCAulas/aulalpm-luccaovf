@@ -40,7 +40,7 @@ public class Cliente {
 
     // metodo para adicionar cliente
 
-    public static void adicionarCliente(Cliente novoCliente2) {
+    public static void adicionarCliente(Scanner scanner) {
 
         String nome;
 
@@ -70,19 +70,18 @@ public class Cliente {
         codigoAlter = input.nextInt();
         input.nextLine();
 
-        for (Cliente cliente : armazenamentoCliente) {
-            if (cliente.getId() == codigoAlter) {
-                System.out.println("Equipamento Encontrado, nome: " + cliente.getNome());
-
-                System.out.println("Digite o novo nome do cliente: ");
-                String novoNome = input.nextLine();
-                cliente.setNome(novoNome);
-                System.out.println("Cliente Alterado Com Sucesso");
-
-            } else {
-                System.out.println("Cliente com o codigo: " + codigoAlter + " Nao encontrado");
-            }
+        Cliente clienteEditado;
+        clienteEditado = Cliente.encontraCliente(codigoAlter);
+        if(clienteEditado != null) {
+        	System.out.println("Cliente Encontrado, nome: " + clienteEditado.getNome());
+                
+        	System.out.println("Digite o novo nome do cliente: ");
+        	String novoNome = input.nextLine();
+        	clienteEditado.setNome(novoNome);
+        	System.out.println("Cliente Alterado Com Sucesso");
         }
+        else
+        	System.out.println("Cliente com o codigo: " + codigoAlter + " Nao encontrado");
     }
 
     // metodo para excluir cliente
@@ -91,18 +90,15 @@ public class Cliente {
         System.out.println("Digite o codigo do cliente que deseja excluir: ");
         codigoExcluir = input.nextInt();
 
-        Cliente clienteRemovido = null;
-        for (Cliente cliente : armazenamentoCliente) {
-            if (cliente.getId() == codigoExcluir) {
-                clienteRemovido = cliente;
-                armazenamentoCliente.remove(clienteRemovido);
-                System.out.println("Cliente removido com sucesso!");
-                break;
-            } else {
-                System.out.println("Codigo Invalido");
-            }
-
-        }
+        Cliente clienteExcluido;
+        clienteExcluido = Cliente.encontraCliente(codigoExcluir);
+        
+         if (clienteExcluido != null) {
+             armazenamentoCliente.remove(clienteExcluido);
+             System.out.println("Cliente removido com sucesso!");
+         } else {
+             System.out.println("Codigo Invalido");
+         }
     }
     
     public static Cliente encontraCliente(int id) {

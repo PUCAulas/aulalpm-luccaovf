@@ -132,7 +132,8 @@ public class Emprestimo {
     public static void listarEmprestimos() {
         System.out.println("\nLista de Alugueis:");
         for (Emprestimo emprestimo : armazenamentoEmprestimo) {
-            System.out.println("ID: " + emprestimo.getId());
+            System.out.println("ID: " + emprestimo.getId()+", Nome Cliente: "+emprestimo.cliente.getNome()
+            	+", Nome Equipamento: "+emprestimo.equipamento.getTipoEquipamento());
             emprestimo.imprimirValor();
         }
     }
@@ -144,20 +145,20 @@ public class Emprestimo {
         System.out.println("Digite o codigo do aluguel que deseja alterar: ");
         codigoAlter = input.nextInt();
         input.nextLine();
-
-        for (Emprestimo emprestimo : armazenamentoEmprestimo) {
-            if (emprestimo.getId() == codigoAlter) {
-                System.out.println("Aluguel Encontrado, ID: " + emprestimo.getId());
-
-                System.out.println("\nDigite novo o valor diario do aluguel: ");
-                double valorEmprestimo = input.nextDouble();
-                emprestimo.setValorEmprestimo(valorEmprestimo);
-                System.out.println("Valor do emprestimo alterado com sucesso!");
-
-            } else {
-                System.out.println("Cliente com o codigo: " + codigoAlter + " Nao encontrado");
-            }
+        
+        Emprestimo empEdit;
+        empEdit = Emprestimo.encontraEmprestimo(codigoAlter);
+        
+        if (empEdit != null) {
+        	System.out.println("Aluguel Encontrado, ID: " + empEdit.getId());
+            System.out.println("\nDigite novo o valor diario do aluguel: ");
+            double valorEmprestimo = input.nextDouble();
+            empEdit.setValorEmprestimo(valorEmprestimo);
+            System.out.println("Valor do emprestimo alterado com sucesso!");
+        } else {
+            System.out.println("Cliente com o codigo: " + codigoAlter + " Nao encontrado");
         }
+        
     }
 
     // metodo para excluir emprestimo
@@ -166,17 +167,14 @@ public class Emprestimo {
         System.out.println("Digite o codigo do emprestimo que deseja excluir: ");
         codigoExcluir = input.nextInt();
 
-        Emprestimo emprestimoRemovido = null;
-        for (Emprestimo emprestimo : armazenamentoEmprestimo) {
-            if (emprestimo.getId() == codigoExcluir) {
-            	emprestimoRemovido = emprestimo;
-                armazenamentoEmprestimo.remove(emprestimoRemovido);
-                System.out.println("Cliente removido com sucesso!");
-                break;
-            } else {
-                System.out.println("Codigo Invalido");
-            }
-
+        Emprestimo emprestimoRemovido;
+        emprestimoRemovido = Emprestimo.encontraEmprestimo(codigoExcluir);
+       
+        if (emprestimoRemovido != null) {
+            armazenamentoEmprestimo.remove(emprestimoRemovido);
+            System.out.println("Cliente removido com sucesso!");   
+        } else {
+            System.out.println("Codigo Invalido");
         }
     }
     
