@@ -100,32 +100,40 @@ public class Emprestimo {
         System.out.println("\nDigite o id do cliente do aluguel: ");
         idProcura = input.nextInt();
         cliente = Cliente.encontraCliente(idProcura);
-        System.out.println("\nDigite o id do equipamento do aluguel: ");
-        idProcura = input.nextInt();
-        equipamento = Equipamento.encontraEquipamento(idProcura);
+        if(cliente != null) {
+        	System.out.println("\nDigite o id do equipamento do aluguel: ");
+        	idProcura = input.nextInt();
+        	equipamento = Equipamento.encontraEquipamento(idProcura);
+        	if(equipamento != null) {
+        		System.out.println("\nDigite o valor diario do aluguel: ");
+        		valorEmprestimo = input.nextDouble();
+        		codigoEmprestimo = random.nextInt(99999999);
         
-        System.out.println("\nDigite o valor diario do aluguel: ");
-        valorEmprestimo = input.nextDouble();
-        codigoEmprestimo = random.nextInt(99999999);
-        System.out.println("\nCodigo Gerado Automaticamente: " + codigoEmprestimo);
         
-        System.out.println("\nDigite o dia do inicio do aluguel: ");
-        dia = input.nextInt();
-        System.out.println("Digite o mes do inicio do aluguel: ");
-        mes = input.nextInt();
-        System.out.println("Digite o ano do inicio do aluguel: ");
-        ano = input.nextInt();
-        dataInicio = LocalDate.of(ano, mes, dia);
+        		System.out.println("\nDigite o dia do inicio do aluguel: ");
+        		dia = input.nextInt();
+        		System.out.println("Digite o mes do inicio do aluguel: ");
+        		mes = input.nextInt();
+        		System.out.println("Digite o ano do inicio do aluguel: ");
+        		ano = input.nextInt();
+        		dataInicio = LocalDate.of(ano, mes, dia);
         
-        System.out.println("\nDigite o dia do fim do aluguel: ");
-        dia = input.nextInt();
-        System.out.println("Digite o mes do fim do aluguel: ");
-        mes = input.nextInt();
-        System.out.println("Digite o ano do fim do aluguel: ");
-        ano = input.nextInt();
-        dataFim = LocalDate.of(ano, mes, dia);
-        Emprestimo novoEmprestimo = new Emprestimo(valorEmprestimo,dataInicio, dataFim, cliente, equipamento, codigoEmprestimo);
-        armazenamentoEmprestimo.add(novoEmprestimo);
+        		System.out.println("\nDigite o dia do fim do aluguel: ");
+        		dia = input.nextInt();
+        		System.out.println("Digite o mes do fim do aluguel: ");
+        		mes = input.nextInt();
+        		System.out.println("Digite o ano do fim do aluguel: ");
+        		ano = input.nextInt();
+        		dataFim = LocalDate.of(ano, mes, dia);
+        		Emprestimo novoEmprestimo = new Emprestimo(valorEmprestimo,dataInicio, dataFim, cliente, equipamento, codigoEmprestimo);
+        		armazenamentoEmprestimo.add(novoEmprestimo);
+        		System.out.println("\nCodigo Gerado Automaticamente: " + codigoEmprestimo);
+        	}
+        	else
+        		System.out.println("Equipamento Nao Encontrado!");
+        }
+         else
+        	 System.out.println("Cliente Nao Encontrado!");
     }
 
     // metodo para listar todos Emprestimos
@@ -133,7 +141,8 @@ public class Emprestimo {
         System.out.println("\nLista de Alugueis:");
         for (Emprestimo emprestimo : armazenamentoEmprestimo) {
             System.out.println("ID: " + emprestimo.getId()+", Nome Cliente: "+emprestimo.cliente.getNome()
-            	+", Nome Equipamento: "+emprestimo.equipamento.getTipoEquipamento());
+            	+", Nome Equipamento: "+emprestimo.equipamento.getTipoEquipamento()
+            	+"\nData de Inicio do Alguel: "+emprestimo.getDataInicio()+" Data do Fim do Alguel: "+emprestimo.getDataFim());
             emprestimo.imprimirValor();
         }
     }
@@ -156,7 +165,7 @@ public class Emprestimo {
             empEdit.setValorEmprestimo(valorEmprestimo);
             System.out.println("Valor do emprestimo alterado com sucesso!");
         } else {
-            System.out.println("Cliente com o codigo: " + codigoAlter + " Nao encontrado");
+            System.out.println("Aluguel com o codigo: " + codigoAlter + " Nao encontrado");
         }
         
     }
@@ -187,5 +196,41 @@ public class Emprestimo {
     		}
     	}
 		return null;
+    }
+    
+    public static void listarRelatorioMensal() {
+    	int mesAtual = LocalDate.now().getMonth().getValue();
+    	int anoAtual = LocalDate.now().getYear();
+    	double valorTotalNoMes = 0;
+    	System.out.println("Os Alugueis Que Comecam No Mes Atual, "+mesAtual+", Sao:");
+    	for(Emprestimo emprestimo : armazenamentoEmprestimo) {
+    		if(emprestimo.getDataInicio().getMonth().getValue() == mesAtual && emprestimo.getDataInicio().getYear() == anoAtual) {
+    			System.out.println("ID: " + emprestimo.getId()+", Nome Cliente: "+emprestimo.cliente.getNome()
+            	+", Nome Equipamento: "+emprestimo.equipamento.getTipoEquipamento());
+    			emprestimo.imprimirValor();
+    			valorTotalNoMes += emprestimo.calculaDiasEmprestimo() * emprestimo.valorEmprestimo;
+    		}
+    	}
+    	System.out.println("O Valor Total Dos Alugueis Que Comecam No Mes Atual Eh: "+valorTotalNoMes);
+    	
+    }
+    
+    public static void listarEmprestimoCliente() {
+    	System.out.println("Informe o ID do Cliente Desejado: ");
+    	int idCliente = input.nextInt();
+    	Cliente cliente = Cliente.encontraCliente(idCliente);
+    	if(cliente != null) {
+    	System.out.println("Os Alugueis do Cliente "+cliente.getNome()+" Sao:");
+    	for(Emprestimo emprestimo : armazenamentoEmprestimo) {
+    		if(emprestimo.getCliente() == cliente) {
+    			System.out.println("ID: " + emprestimo.getId()+", Nome Cliente: "+emprestimo.cliente.getNome()
+            	+", Nome Equipamento: "+emprestimo.equipamento.getTipoEquipamento());
+    			emprestimo.imprimirValor();
+    			
+    		}
+    	}
+    	}
+    	else
+    		System.out.println("Cliente com ID "+idCliente+" Nao Encontrado!");
     }
 }
